@@ -19,25 +19,22 @@ pipeline {
                             report: 'test-results'
                           ])
                     }
+                  
+                    script {
+                        publishHTML(
+                                target: [
+                                        allowMissing         : false,
+                                        alwaysLinkToLastBuild: false,
+                                        keepAll              : true,
+                                        reportDir            : 'test-results',
+                                        reportFiles          : 'index.html',
+                                        reportName           : "Allure Report"
+                                ]
+                        )
+                    }
                 }
             }
         }
-        
-        stage('Publish') {
-            steps {
-                script {
-                    publishHTML(
-                            target: [
-                                    allowMissing         : false,
-                                    alwaysLinkToLastBuild: false,
-                                    keepAll              : true,
-                                    reportDir            : 'test-results',
-                                    reportFiles          : 'index.html',
-                                    reportName           : "Allure Report"
-                            ]
-                    )
-                }
-            }
-        }
+      
     }
 }
