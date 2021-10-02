@@ -28,7 +28,7 @@ pipeline {
                                         alwaysLinkToLastBuild: true,
                                         keepAll              : true,
                                         reportDir            : 'test-results',
-                                        reportFiles.         : 'htmlpublisher-wrapper.html,index.html',
+                                        reportFiles         : 'htmlpublisher-wrapper.html,index.html',
                                         reportName           : 'Allure Report',
                                         reportTitles         : 'The Report'
                                 ]
