@@ -16,12 +16,26 @@ pipeline {
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'test-results']],
-                        report: 'test_report',
-                        allurePrefix: 'test_report'
+                        report: 'test_report'
                       ])
                     }
                 }
             }
         }
+        
+        stage('Publish') {
+        echo 'Publish Allure report'
+        publishHTML(
+                target: [
+                        allowMissing         : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll              : true,
+                        reportDir            : 'test-results',
+                        reportFiles          : 'index.html',
+                        reportName           : "Allure Report"
+                ]
+            )
+         }
+       
     }
 }
