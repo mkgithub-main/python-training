@@ -9,12 +9,14 @@ pipeline {
             post {
               always {
                     script {
+                     
                       allure([
-                        includeProperties: false,
+                        includeProperties: true,
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'target/allure-results']]
+                        results: [[path: 'test-results']],
+                        report: 'test_report',
                       ])
                     }
                 }
