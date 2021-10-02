@@ -17,6 +17,7 @@ pipeline {
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'test-results']],
                         report: 'test_report',
+                        allurePrefix: 'test_report'
                       ])
                     }
                 }
