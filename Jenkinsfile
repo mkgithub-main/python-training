@@ -35,8 +35,7 @@ pipeline {
                                     reportFiles          : 'index.html',
                                     reportName           : "Allure Report"
                             ]
-                        )
-                     }
+                    )
                 }
             }
         }
