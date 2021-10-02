@@ -21,17 +21,14 @@ pipeline {
                     }
                   
                     script {
-                        def htmlFiles
-                        dir ('reports') {
-                            htmlFiles = findFiles glob: '*.html'
-                        }
+                     
                         publishHTML(
                                 target: [
                                         allowMissing         : true,
                                         alwaysLinkToLastBuild: true,
                                         keepAll              : true,
                                         reportDir            : 'test-results',
-                                        reportFiles: htmlFiles.join(','),
+                                        reportFiles.         : 'htmlpublisher-wrapper.html,index.html',
                                         reportName           : 'Allure Report',
                                         reportTitles         : 'The Report'
                                 ]
