@@ -16,7 +16,7 @@ pipeline {
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
                         results: [[path: 'test-results']],
-                        report: 'test_report'
+                        report: 'test-results'
                       ])
                     }
                 }
