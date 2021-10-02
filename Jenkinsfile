@@ -10,31 +10,35 @@ pipeline {
               always {
                     script {
                      
-                      allure([
-                        includeProperties: true,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'test-results']],
-                        report: 'test-results'
-                      ])
+                          allure([
+                            includeProperties: true,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'test-results']],
+                            report: 'test-results'
+                          ])
                     }
                 }
             }
         }
         
         stage('Publish') {
-            publishHTML(
-                    target: [
-                            allowMissing         : false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll              : true,
-                            reportDir            : 'test-results',
-                            reportFiles          : 'index.html',
-                            reportName           : "Allure Report"
-                    ]
-                )
-             }
+            steps {
+                script {
+                    publishHTML(
+                            target: [
+                                    allowMissing         : false,
+                                    alwaysLinkToLastBuild: false,
+                                    keepAll              : true,
+                                    reportDir            : 'test-results',
+                                    reportFiles          : 'index.html',
+                                    reportName           : "Allure Report"
+                            ]
+                        )
+                     }
+                }
+            }
         }
     }
 }
