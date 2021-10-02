@@ -23,12 +23,13 @@ pipeline {
                     script {
                         publishHTML(
                                 target: [
-                                        allowMissing         : false,
-                                        alwaysLinkToLastBuild: false,
+                                        allowMissing         : true,
+                                        alwaysLinkToLastBuild: true,
                                         keepAll              : true,
                                         reportDir            : 'test-results',
-                                        reportFiles          : 'index.html',
-                                        reportName           : "Allure Report"
+                                        reportFiles: "${dir('test-results') { findFiles(glob: '**/*.html').join(',') ?: 'Not found' }}",
+                                        reportName           : 'Allure Report',
+                                        reportTitles         : 'The Report'
                                 ]
                         )
                     }
