@@ -13,7 +13,8 @@ pipeline {
                           allure([
                             includeProperties: true,
                             jdk: '',
-                            properties: [[key: 'allure.display.name', value: 'New Report']],
+                            displayName: 'Marina New Report',
+                            properties: [],
                             reportBuildPolicy: 'ALWAYS',
                             results: [[path: 'test-results']],
                             report: 'test-results'
